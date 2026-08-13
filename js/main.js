@@ -79,4 +79,70 @@
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") closeLightbox();
   });
+
+  /* ----- Suite photo gallery modal (shared across units) ----- */
+  var SUITE_PHOTOS = [
+    { src: "assets/images/suite/living-1.png",  cap: "Living & dining" },
+    { src: "assets/images/suite/living-2.png",  cap: "Living room" },
+    { src: "assets/images/suite/living-3.png",  cap: "Living room" },
+    { src: "assets/images/suite/living-4.png",  cap: "Living room" },
+    { src: "assets/images/suite/living-5.png",  cap: "Living area" },
+    { src: "assets/images/suite/living-6.png",  cap: "Living area" },
+    { src: "assets/images/suite/living-7.png",  cap: "Living area" },
+    { src: "assets/images/suite/kitchen-1.png", cap: "Kitchen" },
+    { src: "assets/images/suite/kitchen-2.png", cap: "Kitchen" },
+    { src: "assets/images/suite/kitchen-3.png", cap: "Kitchen" },
+    { src: "assets/images/suite/kitchen-4.png", cap: "Kitchen" },
+    { src: "assets/images/suite/bedroom-1.png", cap: "Bedroom" },
+    { src: "assets/images/suite/bedroom-2.png", cap: "Bedroom" },
+    { src: "assets/images/suite/bedroom-3.png", cap: "Bedroom" },
+    { src: "assets/images/suite/bath-1.png",    cap: "Bathroom" },
+    { src: "assets/images/suite/bath-2.png",    cap: "Bathroom" },
+    { src: "assets/images/suite/balcony.png",   cap: "Private balcony" },
+    { src: "assets/images/suite/lobby.png",     cap: "Building lobby" }
+  ];
+
+  var sgal = document.getElementById("suiteGallery");
+  var sgImg = document.getElementById("sgImg");
+  var sgCap = document.getElementById("sgCaption");
+  var sgCount = document.getElementById("sgCounter");
+  var sgIndex = 0;
+
+  function sgShow(i) {
+    var n = SUITE_PHOTOS.length;
+    sgIndex = (i + n) % n;
+    var item = SUITE_PHOTOS[sgIndex];
+    sgImg.src = item.src;
+    sgImg.alt = item.cap + " — Harmony one-bedroom suite";
+    sgCap.textContent = item.cap;
+    sgCount.textContent = sgIndex + 1 + " / " + n;
+  }
+  function sgOpen() {
+    if (!sgal) return;
+    sgShow(0);
+    sgal.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function sgClose() {
+    sgal.classList.remove("open");
+    document.body.style.overflow = "";
+    sgImg.src = "";
+  }
+
+  document.querySelectorAll('[data-gallery="suite"]').forEach(function (b) {
+    b.addEventListener("click", sgOpen);
+  });
+  var sgPrev = document.getElementById("sgPrev");
+  var sgNext = document.getElementById("sgNext");
+  var sgCloseBtn = document.getElementById("sgClose");
+  if (sgPrev) sgPrev.addEventListener("click", function () { sgShow(sgIndex - 1); });
+  if (sgNext) sgNext.addEventListener("click", function () { sgShow(sgIndex + 1); });
+  if (sgCloseBtn) sgCloseBtn.addEventListener("click", sgClose);
+  if (sgal) sgal.addEventListener("click", function (e) { if (e.target === sgal) sgClose(); });
+  document.addEventListener("keydown", function (e) {
+    if (!sgal || !sgal.classList.contains("open")) return;
+    if (e.key === "Escape") sgClose();
+    else if (e.key === "ArrowLeft") sgShow(sgIndex - 1);
+    else if (e.key === "ArrowRight") sgShow(sgIndex + 1);
+  });
 })();

@@ -51,7 +51,8 @@ Everything is plain HTML in `index.html`. Common updates:
 
 | What | Where |
 |------|-------|
-| Rent / unit availability | `#residences` section — the three `.unit` cards |
+| Rent / unit availability | `#residences` section — the `.unit` cards |
+| Suite photos (popup gallery) | Images in `assets/images/suite/`; the ordered list + captions live in the `SUITE_PHOTOS` array in `js/main.js`. Both units share one set (same suite type). |
 | Floor plans | `#floorplans` section + images in `assets/images/` |
 | Amenities | `#amenities` section — the `.amenity-list` |
 | Neighbourhood points of interest | `#neighbourhood` — the `.poi-list` |

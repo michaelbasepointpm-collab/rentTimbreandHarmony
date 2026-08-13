@@ -169,7 +169,7 @@ p { margin: 0 0 1.1em; }
 .feature p { margin: 0; font-size: 0.94rem; color: var(--grey); }
 
 /* ---------- Residences / unit cards ---------- */
-.units { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.units { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 420px)); gap: 26px; justify-content: center; }
 .unit {
   background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
   display: flex; flex-direction: column; transition: transform .25s ease, box-shadow .25s ease;
@@ -187,8 +187,9 @@ p { margin: 0 0 1.1em; }
 .unit__price .base { font-size: .88rem; color: var(--grey); margin-top: 2px; }
 .unit__price .base s { color: #b7b2c2; }
 .unit__tag { display:inline-block; margin-top:14px; font-size:.78rem; font-weight:600; color: var(--orange); }
-.unit__cta { padding: 0 26px 26px; }
+.unit__cta { padding: 0 26px 26px; display: flex; flex-direction: column; gap: 10px; }
 .unit__cta .btn { width: 100%; justify-content: center; }
+.unit__photos-btn svg { width: 18px; height: 18px; }
 
 /* ---------- Floorplans ---------- */
 .floorplans { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 480px)); gap: 30px; justify-content: center; }
@@ -264,6 +265,27 @@ p { margin: 0 0 1.1em; }
 .lightbox.open { display: flex; }
 .lightbox img { max-width: 92vw; max-height: 90vh; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
 .lightbox__close { position: absolute; top: 22px; right: 30px; color: #fff; font-size: 2.4rem; cursor: pointer; line-height: 1; background: none; border: 0; }
+
+/* ---------- Suite photo gallery modal ---------- */
+.sgal { position: fixed; inset: 0; z-index: 2100; display: none; align-items: center; justify-content: center; background: rgba(20,10,35,.94); padding: 24px; }
+.sgal.open { display: flex; }
+.sgal__stage { max-width: min(1100px, 92vw); width: 100%; display: flex; flex-direction: column; align-items: center; }
+.sgal__img { max-width: 100%; max-height: 82vh; border-radius: 10px; box-shadow: 0 24px 70px rgba(0,0,0,.55); object-fit: contain; background: #0d0618; }
+.sgal__bar { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-top: 14px; color: #fff; gap: 16px; }
+.sgal__caption { font-family: var(--body-font); font-size: .95rem; opacity: .9; }
+.sgal__counter { font-family: var(--body-font); font-size: .85rem; opacity: .7; letter-spacing: .04em; white-space: nowrap; }
+.sgal__close { position: absolute; top: 16px; right: 24px; background: none; border: 0; color: #fff; font-size: 2.6rem; line-height: 1; cursor: pointer; opacity: .85; }
+.sgal__close:hover { opacity: 1; }
+.sgal__nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,.14); border: 0; color: #fff; width: 54px; height: 54px; border-radius: 50%; font-size: 1.5rem; cursor: pointer; display: grid; place-items: center; transition: background .2s ease; }
+.sgal__nav:hover { background: var(--cta-gradient); }
+.sgal__prev { left: 24px; }
+.sgal__next { right: 24px; }
+@media (max-width: 640px) {
+  .sgal__nav { width: 44px; height: 44px; font-size: 1.2rem; }
+  .sgal__prev { left: 8px; } .sgal__next { right: 8px; }
+  .sgal__img { max-height: 72vh; }
+  .sgal__close { top: 8px; right: 12px; }
+}
 
 /* ---------- Reveal animation (progressive enhancement) ---------- */
 /* Only hide when JS is available; without JS everything stays visible. */
