@@ -1,0 +1,78 @@
+Brightside branding kit
+
+The supplied source is for Brightside Community Homes Foundation. Its visual identity combines a deep purple wordmark with a warm pink-to-orange “70/B” symbol. The anniversary lockup uses “70+ Years of Building community,” while the broader organizational descriptor is “Non-Profit Affordable Homes Since 1952.”
+
+Colour palette
+Purpose	Colour	Hex
+Primary brand purple	Deep purple	#401E6C
+Website CTA pink	Bright pink/red	#E10E49
+Website CTA orange	Golden orange	#FFB612
+Logo gradient pink	Warm coral pink	#EE2F52
+Logo gradient orange	Bright orange	#F9A138
+Supporting lavender	Light purple	#DBD7E7
+Main text	Charcoal	#231F20
+Background/reversed text	White	#FFFFFF
+
+The pink and orange website colours are declared directly in the source, including an orange-to-pink hover gradient.
+
+:root {
+  --brightside-purple: #401E6C;
+  --brightside-pink: #E10E49;
+  --brightside-orange: #FFB612;
+  --brightside-lavender: #DBD7E7;
+  --brightside-charcoal: #231F20;
+  --brightside-white: #FFFFFF;
+
+  --brightside-logo-gradient:
+    linear-gradient(90deg, #EE2F52 0%, #F9A138 100%);
+
+  --brightside-cta-gradient:
+    linear-gradient(180deg, #FFB612 0%, #E10E49 100%);
+}
+Typography
+
+Primary font: Work Sans
+
+The website loads Work Sans in regular and italic styles at weights from 300 through 700. Use it for body copy, navigation, buttons and most interface text.
+
+Display font: Charter
+
+Section headings use the charter class, generally in uppercase, purple and with increased letter spacing.
+
+Recommended hierarchy:
+
+body,
+button,
+input,
+nav {
+  font-family: "Work Sans", Arial, sans-serif;
+}
+
+h1,
+h2,
+.display-heading {
+  font-family: "Charter", Georgia, serif;
+  color: #401E6C;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+The handwritten treatment should be reserved for the word “community” within the anniversary logo rather than used as a general website font.
+
+Logo use
+Light background: gradient symbol with purple wordmark.
+Purple, dark or photographic background: gradient symbol with white wordmark.
+Keep generous clear space around the logo.
+Do not recolour the gradient mark arbitrarily.
+The site uses a dedicated light-version logo asset in both the main and sticky navigation.
+Visual style
+
+Use a clean white canvas with deep-purple overlays, soft lavender content sections and warm gradient accents. Photography should feature real residents, communities and buildings rather than luxury-oriented stock imagery. The design system uses large photographic banners, spacious layouts and rounded feature containers with approximately 20px corner radii.
+
+Buttons follow a clear two-level system:
+
+Primary: donation or highest-priority action.
+Secondary: applications and supporting actions.
+Hover/accent: orange-to-pink gradient.
+
+The overall tone should feel accessible, community-centred, warm, optimistic and trustworthy, emphasizing safe and secure affordable housing rather than exclusivity or luxury.
