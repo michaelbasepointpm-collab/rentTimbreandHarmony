@@ -52,7 +52,8 @@ Everything is plain HTML in `index.html`. Common updates:
 | What | Where |
 |------|-------|
 | Rent / unit availability | `#residences` section — the `.unit` cards |
-| Suite photos (popup gallery) | Images in `assets/images/suite/`; the ordered list + captions live in the `SUITE_PHOTOS` array in `js/main.js`. Both units share one set (same suite type). |
+| Photo popups (galleries) | Two shared sets live in the `GALLERIES` object in `js/main.js`: `suite` (images in `assets/images/suite/`, used by 304 & 402) and `studio` (`assets/images/studio/`, used by 110 & 111). A unit's button opens a set via `data-gallery="suite|studio"`. |
+| Adding photos to unit 309 | 309 currently shows a disabled "Photos coming soon" button. When its photos arrive, add them under `assets/images/`, create a new set in `GALLERIES` (e.g. `oneBedEast`), and replace 309's `<button disabled>` with `<button class="btn btn--secondary unit__photos-btn" data-gallery="oneBedEast">…View photos</button>`. Its floor plan can be added as a third card in the Floor Plans section. |
 | Floor plans | `#floorplans` section + images in `assets/images/` |
 | Amenities | `#amenities` section — the `.amenity-list` |
 | Neighbourhood points of interest | `#neighbourhood` — the `.poi-list` |

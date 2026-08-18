@@ -92,6 +92,8 @@ p { margin: 0 0 1.1em; }
 .btn--ghost:hover { background:#fff; color: var(--purple); }
 .btn--light { background:#fff; color: var(--purple); }
 .btn--light:hover { background: var(--cta-gradient); color:#fff; transform: translateY(-2px); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn:disabled:hover { background: transparent; color: var(--purple); border-color: var(--purple); transform: none; box-shadow: none; }
 
 /* ---------- Navigation ---------- */
 .nav {
@@ -169,7 +171,7 @@ p { margin: 0 0 1.1em; }
 .feature p { margin: 0; font-size: 0.94rem; color: var(--grey); }
 
 /* ---------- Residences / unit cards ---------- */
-.units { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 420px)); gap: 26px; justify-content: center; }
+.units { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 360px)); gap: 26px; justify-content: center; }
 .unit {
   background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
   display: flex; flex-direction: column; transition: transform .25s ease, box-shadow .25s ease;

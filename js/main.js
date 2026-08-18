@@ -80,45 +80,68 @@
     if (e.key === "Escape") closeLightbox();
   });
 
-  /* ----- Suite photo gallery modal (shared across units) ----- */
-  var SUITE_PHOTOS = [
-    { src: "assets/images/suite/living-1.png",  cap: "Living & dining" },
-    { src: "assets/images/suite/living-2.png",  cap: "Living room" },
-    { src: "assets/images/suite/living-3.png",  cap: "Living room" },
-    { src: "assets/images/suite/living-4.png",  cap: "Living room" },
-    { src: "assets/images/suite/living-5.png",  cap: "Living area" },
-    { src: "assets/images/suite/living-6.png",  cap: "Living area" },
-    { src: "assets/images/suite/living-7.png",  cap: "Living area" },
-    { src: "assets/images/suite/kitchen-1.png", cap: "Kitchen" },
-    { src: "assets/images/suite/kitchen-2.png", cap: "Kitchen" },
-    { src: "assets/images/suite/kitchen-3.png", cap: "Kitchen" },
-    { src: "assets/images/suite/kitchen-4.png", cap: "Kitchen" },
-    { src: "assets/images/suite/bedroom-1.png", cap: "Bedroom" },
-    { src: "assets/images/suite/bedroom-2.png", cap: "Bedroom" },
-    { src: "assets/images/suite/bedroom-3.png", cap: "Bedroom" },
-    { src: "assets/images/suite/bath-1.png",    cap: "Bathroom" },
-    { src: "assets/images/suite/bath-2.png",    cap: "Bathroom" },
-    { src: "assets/images/suite/balcony.png",   cap: "Private balcony" },
-    { src: "assets/images/suite/lobby.png",     cap: "Building lobby" }
-  ];
+  /* ----- Photo gallery modal (suite + studio sets, shared across units) ----- */
+  var GALLERIES = {
+    suite: {
+      label: "Harmony one-bedroom suite",
+      photos: [
+        { src: "assets/images/suite/living-1.png",  cap: "Living & dining" },
+        { src: "assets/images/suite/living-2.png",  cap: "Living room" },
+        { src: "assets/images/suite/living-3.png",  cap: "Living room" },
+        { src: "assets/images/suite/living-4.png",  cap: "Living room" },
+        { src: "assets/images/suite/living-5.png",  cap: "Living area" },
+        { src: "assets/images/suite/living-6.png",  cap: "Living area" },
+        { src: "assets/images/suite/living-7.png",  cap: "Living area" },
+        { src: "assets/images/suite/kitchen-1.png", cap: "Kitchen" },
+        { src: "assets/images/suite/kitchen-2.png", cap: "Kitchen" },
+        { src: "assets/images/suite/kitchen-3.png", cap: "Kitchen" },
+        { src: "assets/images/suite/kitchen-4.png", cap: "Kitchen" },
+        { src: "assets/images/suite/bedroom-1.png", cap: "Bedroom" },
+        { src: "assets/images/suite/bedroom-2.png", cap: "Bedroom" },
+        { src: "assets/images/suite/bedroom-3.png", cap: "Bedroom" },
+        { src: "assets/images/suite/bath-1.png",    cap: "Bathroom" },
+        { src: "assets/images/suite/bath-2.png",    cap: "Bathroom" },
+        { src: "assets/images/suite/balcony.png",   cap: "Private balcony" },
+        { src: "assets/images/suite/lobby.png",     cap: "Building lobby" }
+      ]
+    },
+    studio: {
+      label: "Harmony studio",
+      photos: [
+        { src: "assets/images/studio/living-1.png",      cap: "Living & sleeping" },
+        { src: "assets/images/studio/living-kitchen.png", cap: "Living & kitchen" },
+        { src: "assets/images/studio/living-2.png",      cap: "Living area" },
+        { src: "assets/images/studio/living-3.png",      cap: "Living area" },
+        { src: "assets/images/studio/living-4.png",      cap: "Living area" },
+        { src: "assets/images/studio/living-5.png",      cap: "Living area" },
+        { src: "assets/images/studio/entry-1.png",       cap: "Entry" },
+        { src: "assets/images/studio/entry-2.png",       cap: "Entry" },
+        { src: "assets/images/studio/bathroom.png",      cap: "Bathroom" },
+        { src: "assets/images/studio/balcony.png",       cap: "Private patio" }
+      ]
+    }
+  };
 
   var sgal = document.getElementById("suiteGallery");
   var sgImg = document.getElementById("sgImg");
   var sgCap = document.getElementById("sgCaption");
   var sgCount = document.getElementById("sgCounter");
   var sgIndex = 0;
+  var sgSet = GALLERIES.suite;
 
   function sgShow(i) {
-    var n = SUITE_PHOTOS.length;
+    var photos = sgSet.photos;
+    var n = photos.length;
     sgIndex = (i + n) % n;
-    var item = SUITE_PHOTOS[sgIndex];
+    var item = photos[sgIndex];
     sgImg.src = item.src;
-    sgImg.alt = item.cap + " — Harmony one-bedroom suite";
+    sgImg.alt = item.cap + " — " + sgSet.label;
     sgCap.textContent = item.cap;
     sgCount.textContent = sgIndex + 1 + " / " + n;
   }
-  function sgOpen() {
+  function sgOpen(key) {
     if (!sgal) return;
+    sgSet = GALLERIES[key] || GALLERIES.suite;
     sgShow(0);
     sgal.classList.add("open");
     document.body.style.overflow = "hidden";
@@ -129,8 +152,10 @@
     sgImg.src = "";
   }
 
-  document.querySelectorAll('[data-gallery="suite"]').forEach(function (b) {
-    b.addEventListener("click", sgOpen);
+  document.querySelectorAll("[data-gallery]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      sgOpen(b.getAttribute("data-gallery"));
+    });
   });
   var sgPrev = document.getElementById("sgPrev");
   var sgNext = document.getElementById("sgNext");
