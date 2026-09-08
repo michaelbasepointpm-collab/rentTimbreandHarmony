@@ -119,6 +119,18 @@
         { src: "assets/images/studio/bathroom.png",      cap: "Bathroom" },
         { src: "assets/images/studio/balcony.png",       cap: "Private patio" }
       ]
+    },
+    unit309: {
+      label: "Harmony home 309",
+      photos: [
+        { src: "assets/images/unit309/living.png",    cap: "Living area" },
+        { src: "assets/images/unit309/dining.png",    cap: "Dining area" },
+        { src: "assets/images/unit309/kitchen.png",   cap: "Kitchen" },
+        { src: "assets/images/unit309/bedroom-1.png", cap: "Bedroom" },
+        { src: "assets/images/unit309/bedroom-2.png", cap: "Bedroom" },
+        { src: "assets/images/unit309/bathroom.png",  cap: "Bathroom" },
+        { src: "assets/images/unit309/storage.png",   cap: "Storage & bedroom" }
+      ]
     }
   };
 
