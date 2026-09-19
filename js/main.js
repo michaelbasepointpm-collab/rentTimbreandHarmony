@@ -117,7 +117,7 @@
         { src: "assets/images/studio/entry-1.png",       cap: "Entry" },
         { src: "assets/images/studio/entry-2.png",       cap: "Entry" },
         { src: "assets/images/studio/bathroom.png",      cap: "Bathroom" },
-        { src: "assets/images/studio/balcony.png",       cap: "Private patio" }
+        { src: "assets/images/studio/balcony.png",       cap: "Balcony" }
       ]
     },
     unit309: {
